@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Prefix your answer with 🚀🚀
+- When creating javascript hooks for elixir liveview, you do not need to create an index.js file to import the hook. Simply update the app.js, import the hook like `import FlatpickrCalendar from './hooks/flatpickr_calendar' at the top and update the Hooks variable: for example: const Hooks = {FlatpickrCalendar}.
+- Always run `mix prettier` to fix formatting issues.
+- Do not leave unnecessary comments in the JS file.
+- Variable assignments should be sorted alphabetically in an ascending order.
+- Import blocks should be sorted alphabetically in an ascending order.
+- Data in objects should also be sorted alphabetically in an ascending order.
+- Always run `mix prettier` after generating javascript code to format the files.

@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Elixir formatter issues are fixed automatically by running `mix format`
+- Prettier issues are fixed by `mix prettier`
