@@ -1,4 +1,4 @@
-# Optimum Credo rules
+# Optimum Cursor rules
 
 Cursor rules suitable for development using Elixir and Phoenix.
 
