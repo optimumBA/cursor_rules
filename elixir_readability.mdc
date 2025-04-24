@@ -1,0 +1,18 @@
+---
+description: 
+globs: *.{ex,exs}
+alwaysApply: false
+---
+- Don't put comments - I am a developer, I can read the code myself.
+- Environment variable, map keys, struct keys and assigns should be sorted in ascending order.
+- Group multiple `alias`, `import`, `require`, or `use` statements together consistently.
+- Aliases, imports, requires and uses should be alphabetically sorted in ascending order inside their group to ensure consistency and readability.
+- There should be an empty line between @moduledoc, alias, require, import, @type, and module attribute blocks.
+- Schema modules don't need moduledoc, so put `@moduledoc false`. Most of the time, only context modules need moduledoc.
+- When creating a function component, the attributes block (containing lines like `attr :name`) should be ordered alphabetically.
+- Unused variables should follow a consistent naming convention, typically prefixed with an underscore (`_var`) to signify their intent.
+- Ensure that each pipe (`|>`) is used on its own line for better readability. Every pipe chain should start with a raw value/variable.
+- Avoid piping a single function call into a block, as it can obscure the purpose of the pipe.
+- Avoid using a single pipe (`|>`) for a simple operation when it could be written more clearly without piping.
+- Avoid negating `is_nil/1`. Use the positive form of the condition for clarity.
+- Fix formatting issues by running `mix format`.

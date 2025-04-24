@@ -3,22 +3,14 @@ description:
 globs: 
 alwaysApply: true
 ---
-- Prefix your answer with 🤖🤖
-- Don’t put unnecessary comments - I am a developer, I can read the code myself.
-- Use only Elixir, don’t call functions that don’t exist that might be available in other languages.
-- Environment variable, map keys, struct keys and assigns should be sorted in ascending order.
-- If there is @impl there’s no need for @spec
-- Group multiple `alias`, `import`, `require`, or `use` statements together consistently for better readability.
-- Imports and aliases should be alphabetically sorted in ascending order to ensure consistency and readability.
-- Unused variables should follow a consistent naming convention, typically prefixed with an underscore (`_var`) to signify their intent.
+- Use only proper Elixir: don't call functions that don't exist that might be available in other languages.
+- When referring to schemas from other contexts, alias the context (e.g. `alias MyApp.Accounts`) and prefix the schema name with context (e.g. `Accounts.User`).
+- Write specs for public function. Private functions don't need @spec.
+- When defining a type for a struct, don't put list their keys and value types (`@t :: %__MODULE__{}` is sufficient).
+- If there is `@impl` before a function definition, there's no need for `@spec`.
+- Avoid using `@impl true`. Instead, specify the module which we are adopting behavior from (e.g. `@impl Phoenix.LiveView`).
 - Avoid duplicating code. Refactor shared logic into reusable functions to reduce redundancy.
-- Avoid using `impl true` in module definitions unless absolutely necessary, as it can reduce readability. @impl true` should be `@impl MyBehaviour.
-- Use `alias` for multiple module imports from the same namespace to improve readability and reduce redundancy.
-- Ensure that each pipe (`|>`) is used on its own line for better readability. 
-- Avoid piping a single function call into a block, as it can obscure the purpose of the pipe.
-- Avoid using a single pipe (`|>`) for a simple operation when it could be written more clearly without piping.
-- Avoid negating `is_nil/1`. Use the positive form of the condition for clarity. 
-- Schema modules don’t need moduledoc, so put `@moduledoc false`
-- Only context modules need moduledoc.
-- When creating a function component, the attributes block(attr) should be ordered alphabetically.
-- There should be spaces between @moduledoc, alias, require, import, @type blocks for readability
+- Always run `mix format` after generating Elixir code to format the files.
+- When creating new resources (schemas, contexts, LiveViews) use Phoenix generators (`mix phx.gen.*`; e.g. `mix phx.gen.context`).
+- To see all available generators, run `mix help`.
+- To see all available generator options, run `mix help phx.gen.*` (e.g. `mix help phx.gen.context`).

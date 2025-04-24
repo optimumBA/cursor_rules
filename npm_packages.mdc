@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Navigate to the `assets` directory before running any npm installation commands.
