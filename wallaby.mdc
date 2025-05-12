@@ -1,0 +1,7 @@
+---
+description: Automating user interactions inside browser using Wallaby and chromedriver
+globs: 
+alwaysApply: false
+---
+- Make sure to wait until elements appear on the page before trying to provide input.
+- Write Wallaby tests only if they are already a part of the codebase or I explicitely ask you to.

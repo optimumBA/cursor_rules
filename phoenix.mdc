@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- When creating new resources (schemas, contexts, LiveViews) use Phoenix generators (`mix phx.gen.*`; e.g. `mix phx.gen.context`).
+- To see all available generators, run `mix help`.
+- To see all available generator options, run `mix help phx.gen.*` (e.g. `mix help phx.gen.context`).
+- When referring to schemas from other contexts, alias the context (e.g. `alias MyApp.Accounts`) and prefix the schema name with context (e.g. `Accounts.User`).
+- When working with PubSub, we can use `Endpoint.broadcast/3` and `Endpoint.subscribe/2`.
+- Run `MIX_ENV=test mix ecto.drop` when trying to reset the test database.
+- There is no need to run `mix ecto.create` and `mix ecto.migrate` for test database because `mix test` does it automatically.
+- Components and live components are tested through the parent LiveViews, not in isolation.
+- Event names should be snake cased.
+- After each code change, the LiveView page reloads automatically, letting you inspect runtime logs and catch errors.

@@ -4,13 +4,9 @@ globs:
 alwaysApply: true
 ---
 - Use only proper Elixir: don't call functions that don't exist that might be available in other languages.
-- When referring to schemas from other contexts, alias the context (e.g. `alias MyApp.Accounts`) and prefix the schema name with context (e.g. `Accounts.User`).
 - Write specs for public function. Private functions don't need @spec.
 - When defining a type for a struct, don't put list their keys and value types (`@t :: %__MODULE__{}` is sufficient).
 - If there is `@impl` before a function definition, there's no need for `@spec`.
 - Avoid using `@impl true`. Instead, specify the module which we are adopting behavior from (e.g. `@impl Phoenix.LiveView`).
 - Avoid duplicating code. Refactor shared logic into reusable functions to reduce redundancy.
-- Always run `mix format` after generating Elixir code to format the files.
-- When creating new resources (schemas, contexts, LiveViews) use Phoenix generators (`mix phx.gen.*`; e.g. `mix phx.gen.context`).
-- To see all available generators, run `mix help`.
-- To see all available generator options, run `mix help phx.gen.*` (e.g. `mix help phx.gen.context`).
+- Don't add checks for conditions that will never happen.

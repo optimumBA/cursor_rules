@@ -10,3 +10,4 @@ alwaysApply: true
 - Import blocks should be sorted alphabetically in an ascending order.
 - Data in objects should also be sorted alphabetically in an ascending order.
 - Always run `mix prettier` after generating Javascript code to format the files.
+- Assets are built automatically so there's no need to run `npm run build`.

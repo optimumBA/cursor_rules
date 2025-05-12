@@ -16,3 +16,4 @@ alwaysApply: false
 - Avoid using a single pipe (`|>`) for a simple operation when it could be written more clearly without piping.
 - Avoid negating `is_nil/1`. Use the positive form of the condition for clarity.
 - Fix formatting issues by running `mix format`.
+- Fields inside schemas need to be ordered alphabetically.

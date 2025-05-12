@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Run `make ci` to make sure all the changes are valid.
+- Run `mix format` in case there are formatting issues.
+- There's no need to prepend `mix test` command with `MIX_ENV=test`.
+- Run `mix coveralls` and `mix coveralls.detail` to find out which code needs to be covered with tests.
+- While fixing tests, you can use mix test --failed to run only previously failed tests.
+- Never cheat by hardcoding values that are fit only for our tests to pass.
+- To check code coverage run `mix coveralls.json` and then read file `cover/excoveralls.json`.
+- Running `mix help <command>` can give you info on available options.
