@@ -1,0 +1,10 @@
+---
+description: Planning new features and refactorings before implementation
+globs: 
+alwaysApply: false
+---
+- Before doing any big changes, write down a plan.
+- When I ask you to plan something out, write it down in an .md file so I can later reuse it as a context for a new chat session.
+- Write down steps as detailed as possible so I can revise it in case I don't like something.
+- Do things in stages so I can start a new chat after each stage.
+- Ask me if you need any more details.
