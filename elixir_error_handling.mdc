@@ -1,0 +1,11 @@
+---
+description: "Error handling patterns and debugging practices for Elixir development including linter error resolution"
+globs:
+alwaysApply: false
+---
+- Don't loop more than 3 times when fixing linter errors on the same file.
+- On the third attempt, stop and ask for guidance rather than continuing to guess.
+- Never hardcode values that only work for specific tests to make them pass.
+- Use proper error handling patterns with `{:ok, result}` and `{:error, reason}` tuples.
+- Prefer `case` statements over nested `if` conditions for pattern matching.
+- Use `with` statements for chaining operations that might fail.

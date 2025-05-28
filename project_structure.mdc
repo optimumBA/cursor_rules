@@ -1,0 +1,12 @@
+---
+description: "Standard Phoenix project structure and file organization conventions"
+globs:
+alwaysApply: false
+---
+- Follow standard Phoenix project structure conventions.
+- Contexts belong in `lib/app_name/`.
+- Web layer components belong in `lib/app_name_web/`.
+- Tests should mirror the lib structure in `test/`.
+- Static assets belong in `assets/`.
+- Translation files are in `priv/gettext/` (if using internationalization).
+- Plans and documentation go in `codegen/plans/`.
