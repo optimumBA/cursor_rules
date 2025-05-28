@@ -1,0 +1,17 @@
+---
+description: "Guidelines for creating, organizing, and maintaining Cursor rules for consistent AI agent behavior"
+globs: [".cursor/rules/**/*.mdc"]
+alwaysApply: false
+---
+- Each rule file should have a clear, descriptive filename using snake_case (e.g., `elixir_code_generation.mdc`).
+- All rule files must include metadata header with description, globs, and alwaysApply fields.
+- When working with Cursor rule metadata (frontmatter), use terminal commands to view or edit since file reading tools cannot see the metadata. For content-only changes, regular file editing is fine.
+- Descriptions should be specific and indicate when the rule applies (technology, context, conditions).
+- Use bullet points for concise, actionable guidelines rather than long paragraphs.
+- Group related rules into separate files rather than creating monolithic rule files.
+- Make rules generic and reusable across different projects when possible.
+- For project-specific rules, use conditional language (e.g., "only for projects with internationalization").
+- Use proper glob patterns to target specific file types or directories when relevant.
+- Set `alwaysApply: false` for most rules to allow context-based application.
+- Keep rules focused on a single domain or technology (e.g., separate Elixir and JavaScript rules).
+- Update rule descriptions when adding new guidelines to maintain accuracy.
