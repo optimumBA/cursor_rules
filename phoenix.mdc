@@ -1,5 +1,5 @@
 ---
-description: 
+description: "Phoenix framework specific guidelines for generators, contexts, LiveView, PubSub, database management, and testing patterns"
 globs: 
 alwaysApply: true
 ---

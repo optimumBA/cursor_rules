@@ -1,5 +1,5 @@
 ---
-description: 
+description: "GitHub workflow and CI/CD pipeline configuration and usage"
 globs: .github/github_workflows.ex,.github/workflows/*.yml
 alwaysApply: false
 ---

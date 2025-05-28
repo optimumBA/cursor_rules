@@ -1,5 +1,5 @@
 ---
-description: Automating user interactions inside browser using Wallaby and chromedriver
+description: "End-to-end testing using Wallaby and ChromeDriver"
 globs: 
 alwaysApply: false
 ---

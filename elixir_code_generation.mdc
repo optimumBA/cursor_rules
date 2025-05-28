@@ -1,5 +1,5 @@
 ---
-description: 
+description: "Guidelines for writing clean Elixir code - function specs, type definitions, implementation directives, and code organization patterns"
 globs: 
 alwaysApply: true
 ---

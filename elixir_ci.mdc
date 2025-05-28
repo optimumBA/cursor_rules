@@ -1,5 +1,5 @@
 ---
-description: 
+description: "Continuous integration workflow for Elixir projects - running tests, formatting, coverage analysis, and quality checks"
 globs: 
 alwaysApply: true
 ---

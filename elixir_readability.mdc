@@ -1,5 +1,5 @@
 ---
-description: 
+description: "Code formatting and readability standards for Elixir projects including field ordering and proper language usage"
 globs: *.{ex,exs}
 alwaysApply: false
 ---

@@ -1,5 +1,5 @@
 ---
-description: Planning new features and refactorings before implementation
+description: "Project planning and feature development workflow including documentation, staging, and architectural considerations"
 globs: 
 alwaysApply: false
 ---
