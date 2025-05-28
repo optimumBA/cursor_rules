@@ -3,7 +3,13 @@ description: Translation workflow for Elixir/Phoenix gettext - finding and filli
 globs: 
 alwaysApply: false
 ---
+---
+description: Translation workflow for Elixir/Phoenix gettext - finding and filling missing translations
+globs: 
+alwaysApply: false
+---
 - Translations reside in priv/gettext.
+- When adding new strings to be translated, use `mix gettext.extract --merge` to generate .pot and .po files.
 - Don't change files for English (en).
 - Translation files are organized by a domain, e.g. auth.po.
 - To add a language, create a directory under priv/gettext (e.g. priv/gettext/en).
@@ -13,3 +19,4 @@ alwaysApply: false
 - After making translation changes, run `mix gettext.extract` to ensure consistency.
 - Test translations by switching language in the application.
 - Keep translations contextually appropriate and consistent with existing terminology in the same domain.
+- Never use gettext functions in tests.
