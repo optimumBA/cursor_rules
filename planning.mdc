@@ -8,3 +8,5 @@ alwaysApply: false
 - Write down steps as detailed as possible so I can revise it in case I don't like something.
 - Do things in stages so I can start a new chat after each stage.
 - Ask me if you need any more details.
+- Write plans in the `codegen/plans` directory.
+- Suggest a message for the git commit.

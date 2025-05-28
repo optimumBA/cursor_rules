@@ -3,7 +3,6 @@ description:
 globs: *.{ex,exs}
 alwaysApply: false
 ---
-- Don't put comments - I am a developer, I can read the code myself.
 - Environment variable, map keys, struct keys and assigns should be sorted in ascending order.
 - Group multiple `alias`, `import`, `require`, or `use` statements together consistently.
 - Aliases, imports, requires and uses should be alphabetically sorted in ascending order inside their group to ensure consistency and readability.

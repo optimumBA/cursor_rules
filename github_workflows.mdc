@@ -6,3 +6,4 @@ alwaysApply: false
 - Update workflows exclusively by editing `.github/github_workflows.ex` file.
 - After changing file `.github/github_workflows.ex` make sure to run `mix github_workflows.generate` command so that files in the `.github/workflows` directory reflect those changes.
 - Remove directory `.github/workflows` before running `mix github_workflows.generate` to ensure stale workflows are removed after changing workflows in the input file.
+- Prettier does not share steps with Elixir jobs, so don't refactor it to call `elixir_job/2` function.
