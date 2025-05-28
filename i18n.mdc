@@ -1,0 +1,15 @@
+---
+description: Translation workflow for Elixir/Phoenix gettext - finding and filling missing translations
+globs: 
+alwaysApply: false
+---
+- Translations reside in priv/gettext.
+- Don't change files for English (en).
+- Translation files are organized by a domain, e.g. auth.po.
+- To add a language, create a directory under priv/gettext (e.g. priv/gettext/en).
+- To list .po files run `ls priv/gettext/*/LC_MESSAGES/*.po`.
+- If any .po file (not in en) is missing a translation (msgstr field is empty), translate it by filling the msgstr with appropriate translation.
+- Check for missing translations with: `make show_missing_translations` to ignore an empty msgstr in the header.
+- After making translation changes, run `mix gettext.extract` to ensure consistency.
+- Test translations by switching language in the application.
+- Keep translations contextually appropriate and consistent with existing terminology in the same domain.
