@@ -1,6 +1,6 @@
 ---
 description: "Error handling patterns and debugging practices for Elixir development including linter error resolution"
-globs:
+globs: ["**/*.{ex,exs}"]
 alwaysApply: false
 ---
 - Don't loop more than 3 times when fixing linter errors on the same file.

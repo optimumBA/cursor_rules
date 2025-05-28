@@ -1,6 +1,6 @@
 ---
 description: "Project planning and feature development workflow including documentation, staging, and architectural considerations"
-globs: 
+globs:
 alwaysApply: false
 ---
 - Before doing any big changes, write down a plan.

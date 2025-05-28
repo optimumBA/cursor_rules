@@ -4,14 +4,38 @@ globs: [".cursor/rules/**/*.mdc"]
 alwaysApply: false
 ---
 - Each rule file should have a clear, descriptive filename using snake_case (e.g., `elixir_code_generation.mdc`).
-- All rule files must include metadata header with description, globs, and alwaysApply fields.
+- All rule files must include metadata header with exactly 3 fields: description, globs, and alwaysApply.
 - When working with Cursor rule metadata (frontmatter), use terminal commands to view or edit since file reading tools cannot see the metadata. For content-only changes, regular file editing is fine.
 - Descriptions should be specific and indicate when the rule applies (technology, context, conditions).
 - Use bullet points for concise, actionable guidelines rather than long paragraphs.
 - Group related rules into separate files rather than creating monolithic rule files.
 - Make rules generic and reusable across different projects when possible.
 - For project-specific rules, use conditional language (e.g., "only for projects with internationalization").
-- Use proper glob patterns to target specific file types or directories when relevant.
-- Set `alwaysApply: false` for most rules to allow context-based application.
+
+## Rule Types and Context Management
+- Use `alwaysApply: true` sparingly - only for core development practices that should always be present.
+- Use `alwaysApply: false` with specific globs for auto-attached rules that apply to certain file types.
+- Use `alwaysApply: false` with empty globs (`globs:`) for agent-requested rules where AI decides relevance.
+- Avoid context overload by limiting the number of `alwaysApply: true` rules.
+- Prefer agent-requested rules for context-specific guidance (planning, i18n, testing, project structure).
+
+## Glob Pattern Guidelines
+- Use proper YAML array format for globs: `["pattern1", "pattern2"]`.
+- For agent-requested rules, use `globs:` (no whitespace, no array) to let AI decide when to include.
+- Avoid overly restrictive globs that miss relevant contexts (e.g., i18n involves more than just .po files).
+- Target specific file types only when the rule truly applies to those files exclusively.
+
+## Best Practices
 - Keep rules focused on a single domain or technology (e.g., separate Elixir and JavaScript rules).
 - Update rule descriptions when adding new guidelines to maintain accuracy.
+- Test rule effectiveness by checking if context feels appropriate for different file types.
+
+## Reading and Updating Rules
+- Use `head -5 filename.mdc` or `cat filename.mdc` to view rule metadata via terminal.
+- File reading tools cannot see the YAML frontmatter metadata - they only show content after the `---` markers.
+- When bulk-updating metadata, use `sed` commands for consistency across multiple files.
+- Use `grep -n "field:" *.mdc` to quickly check specific metadata fields across all rules.
+- After metadata changes, verify with terminal commands before assuming changes took effect.
+- The Cursor Settings UI is the most reliable way to create new rules to avoid formatting issues.
+- If rule changes don't persist, close Cursor completely, choose "Override" on unsaved changes prompt, then reopen.
+- Use `for file in *.mdc; do echo "=== $file ==="; head -5 "$file"; done` to review all rule metadata at once.

@@ -1,6 +1,6 @@
 ---
 description: "Code commenting standards and practices for maintaining clean, readable code"
-globs: 
+globs: ["**/*.{ex,exs,js,sh,md}"]
 alwaysApply: true
 ---
 - Don't put too many comments - I am a developer, I can read the code myself.

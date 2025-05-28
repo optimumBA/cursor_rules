@@ -1,6 +1,6 @@
 ---
 description: "Package management guidelines for JavaScript dependencies in Phoenix projects"
-globs: 
-alwaysApply: true
+globs: ["assets/package.json", "package.json"]
+alwaysApply: false
 ---
 - Navigate to the `assets` directory before running any npm installation commands.

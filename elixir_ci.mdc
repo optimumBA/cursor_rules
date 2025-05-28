@@ -1,7 +1,7 @@
 ---
 description: "Continuous integration workflow for Elixir projects - running tests, formatting, coverage analysis, and quality checks"
-globs: 
-alwaysApply: true
+globs: ["**/*.{ex,exs}"]
+alwaysApply: false
 ---
 - Run `make ci` to make sure all the changes are valid.
 - Run `mix format` in case there are formatting issues.

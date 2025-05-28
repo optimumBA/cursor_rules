@@ -1,6 +1,6 @@
 ---
 description: "End-to-end testing using Wallaby and ChromeDriver"
-globs: 
+globs:
 alwaysApply: false
 ---
 - Make sure to wait until elements appear on the page before trying to provide input.

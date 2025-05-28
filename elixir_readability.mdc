@@ -1,7 +1,7 @@
 ---
 description: "Code formatting and readability standards for Elixir projects including field ordering and proper language usage"
 globs: *.{ex,exs}
-alwaysApply: false
+alwaysApply: true
 ---
 - Environment variable, map keys, struct keys and assigns should be sorted in ascending order.
 - Group multiple `alias`, `import`, `require`, or `use` statements together consistently.

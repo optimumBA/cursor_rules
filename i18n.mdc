@@ -1,6 +1,6 @@
 ---
 description: "Translation workflow for Elixir/Phoenix gettext - finding and filling missing translations (only for projects with internationalization)"
-globs: 
+globs:
 alwaysApply: false
 ---
 **Note: This rule applies only to projects using internationalization/translations**

@@ -1,6 +1,6 @@
 ---
 description: "Guidelines for writing clean Elixir code - function specs, type definitions, implementation directives, and code organization patterns"
-globs: 
+globs: ["**/*.{ex,exs}"]
 alwaysApply: true
 ---
 - Use only proper Elixir: don't call functions that don't exist that might be available in other languages.
