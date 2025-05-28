@@ -10,3 +10,7 @@ alwaysApply: false
 - Ask me if you need any more details.
 - Write plans in the `codegen/plans` directory.
 - Suggest a message for the git commit.
+- Consider the complete development lifecycle: planning → data layer → business logic → UI → testing.
+- Include refactoring considerations and potential breaking changes in plans.
+- Document any new dependencies or architectural decisions.
+- Plan for internationalization if the feature involves user-facing text (only for projects with i18n support).

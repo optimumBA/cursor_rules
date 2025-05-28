@@ -16,3 +16,4 @@ alwaysApply: false
 - Avoid negating `is_nil/1`. Use the positive form of the condition for clarity.
 - Fix formatting issues by running `mix format`.
 - Fields inside schemas need to be ordered alphabetically.
+- Use only proper Elixir: don't call functions that don't exist that might be available in other languages.

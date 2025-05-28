@@ -5,3 +5,4 @@ alwaysApply: true
 ---
 - Don't put too many comments - I am a developer, I can read the code myself.
 - When asked to remove comments in shell scripts and Elixir code, use Regex to remove lines starting with #.
+- When asked to remove comments in JavaScript code, use Regex to remove lines starting with // and remove /* */ comment blocks.
