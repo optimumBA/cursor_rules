@@ -1,0 +1,114 @@
+---
+description: "Figma design to Phoenix LiveView conversion using MCP integration, design tokens, and component development patterns"
+globs:
+alwaysApply: false
+---
+# Figma Design to Phoenix LiveView Conversion
+
+## Figma MCP Integration
+- Use the configured TalkToFigma MCP server to analyze Figma designs directly in Cursor.
+- Start with `mcp_TalkToFigma_get_document_info` to understand the overall file structure.
+- Use `mcp_TalkToFigma_read_my_design` to get detailed information about selected design elements.
+- Extract design tokens using `mcp_TalkToFigma_get_styles` for colors, typography, and effects.
+- Use `mcp_TalkToFigma_get_local_components` to identify reusable design components.
+- Export design elements as images using `mcp_TalkToFigma_export_node_as_image` when needed for reference.
+
+## Design Token Extraction Strategy
+- Extract colors from Figma fills and convert RGB values to hex: `Math.round(r * 255).toString(16).padStart(2, '0')`.
+- Map Figma typography styles to Tailwind font classes and custom CSS properties.
+- Convert Figma spacing values to consistent design system tokens (8px grid recommended).
+- Extract border radius values and map to Tailwind rounded classes or custom values.
+- Convert Figma shadows to Tailwind shadow utilities or custom CSS shadow definitions.
+- Document all extracted tokens in a design system module for consistency.
+
+## Three-Layer Architecture for Styling
+- **Layer 1 (Foundation)**: Use DaisyUI base classes (`btn`, `card`, `input`, `modal`) for semantic components.
+- **Layer 2 (Utilities)**: Apply Tailwind utilities for spacing, layout, and responsive behavior (`px-4`, `py-2`, `grid`, `flex`).
+- **Layer 3 (Exact Matching)**: Use arbitrary values for pixel-perfect Figma matching (`bg-[#6366F1]`, `rounded-[12px]`, `shadow-[0_4px_12px_rgba(99,102,241,0.25)]`).
+
+## Phoenix Component Development
+- Create function components in `lib/[app_name]_web/components/` following Phoenix 1.8+ conventions.
+- Use alphabetically ordered `attr` declarations with proper types and documentation.
+- Implement the `@class` attribute pattern for user-provided class composition.
+- Group related components by feature domain (e.g., `job_posting/`, `messaging/`, `profiles/`).
+- Follow Elixir naming conventions: snake_case for files, PascalCase for modules.
+
+## HEEX Template Patterns
+- Use class arrays for conditional styling: `class={["base-class", @variant == "primary" && "primary-styles", @class]}`.
+- Apply exact Figma values with arbitrary properties: `class="px-8 py-4 bg-[#6366F1] text-white rounded-[12px]"`.
+- Implement responsive behavior using Tailwind breakpoints: `sm:px-4 md:px-6 lg:px-8`.
+- Use `render_slot(@inner_block)` for flexible content composition in container components.
+- Leverage Phoenix's built-in form helpers and validation patterns.
+
+## Design System Organization
+- Store Figma color palette in design system module with exact hex values.
+- Define spacing scale matching Figma tokens (xs: 8px, sm: 12px, etc.).
+- Create typography scale with Figma font families and weights.
+- Maintain shadow definitions matching Figma effects.
+- Use CSS custom properties for theme switching: `--primary-color`, `--secondary-color`.
+
+## Component Implementation Workflow
+- **Analyze Figma Component**: Use MCP to examine component structure, properties, and variants.
+- **Extract Design Tokens**: Identify colors, spacing, typography, and effects used.
+- **Create Phoenix Component**: Generate function component with proper `attr` declarations.
+- **Implement Variants**: Handle different states and variations from Figma.
+- **Add Interactivity**: Integrate LiveView events and state management as needed.
+- **Test Responsiveness**: Verify behavior across Figma-defined breakpoints.
+
+## Screen Implementation Strategy
+- Start with the Style Guide or Design System page to establish foundational tokens.
+- Implement core navigation components (sidebars, headers, footers) first.
+- Build authentication flows early as they're often dependencies for other features.
+- Tackle complex features in phases: simple static screens → interactive forms → real-time features.
+- Use Phoenix generators appropriately: `mix phx.gen.context` for business logic, `mix phx.gen.live` for interactive screens.
+
+## Figma File Structure Mapping
+- Map Figma Canvas pages to Phoenix contexts (e.g., "Job Posting" → Jobs context).
+- Convert Figma frames to LiveView templates or function components.
+- Transform Figma components to reusable Phoenix components with proper variants.
+- Maintain design consistency across large screen counts through shared component libraries.
+- Document component usage patterns and variants for team consistency.
+
+## LiveView Integration Patterns
+- Use LiveView for interactive elements: forms, real-time updates, dynamic content.
+- Implement proper event handling with descriptive snake_case event names.
+- Leverage Phoenix PubSub for real-time features matching Figma's interactive prototypes.
+- Handle loading states and error conditions with appropriate UI feedback.
+- Use LiveView's built-in form validation and error display patterns.
+
+## Responsive Design Implementation
+- Extract breakpoint definitions from Figma and map to Tailwind breakpoints.
+- Implement mobile-first responsive design following Figma's responsive rules.
+- Use Tailwind's responsive prefixes consistently: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`.
+- Test touch targets and mobile interactions match Figma's mobile designs.
+- Ensure proper responsive typography scaling and spacing adjustments.
+
+## Performance and Optimization
+- Lazy load complex components for large feature sets (90+ screens).
+- Use CSS custom properties for theme values to reduce class duplication.
+- Optimize Tailwind builds by configuring proper purging of unused classes.
+- Implement component variants to reduce code duplication across similar screens.
+- Use Phoenix's built-in asset optimization and compression features.
+
+## Quality Assurance Process
+- Compare final implementation with original Figma designs using browser dev tools.
+- Use Figma's inspect panel to verify exact CSS values and spacing.
+- Test responsive behavior at all Figma-defined breakpoints.
+- Verify color contrast and accessibility compliance using automated tools.
+- Validate component reusability across different screen contexts.
+- Ensure proper semantic HTML structure for accessibility.
+
+## Development Best Practices
+- Follow Phoenix and Elixir code style guidelines consistently.
+- Write comprehensive tests for complex interactive components.
+- Document component APIs and usage patterns for team collaboration.
+- Use proper error handling and validation patterns throughout.
+- Implement proper logging for debugging and monitoring.
+- Follow security best practices for user input and data handling.
+
+## Figma-to-Code Conversion Tools Integration
+- Use Builder.io Visual Copilot or Locofy.ai for complex layout generation when beneficial.
+- Convert generated HTML/CSS to proper HEEX templates with Phoenix conventions.
+- Integrate generated code with custom component library and design system.
+- Always verify generated code follows Phoenix and Elixir best practices.
+- Refactor generated code to use proper Phoenix patterns and conventions.

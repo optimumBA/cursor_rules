@@ -1,7 +1,7 @@
 ---
-description: "Guidelines for writing clean Elixir code - function specs, type definitions, implementation directives, and code organization patterns"
-globs: ["**/*.{ex,exs}"]
-alwaysApply: true
+description:
+globs: **/*.{ex,exs}
+alwaysApply: false
 ---
 - Use only proper Elixir: don't call functions that don't exist that might be available in other languages.
 - Write specs for public function. Private functions don't need @spec.

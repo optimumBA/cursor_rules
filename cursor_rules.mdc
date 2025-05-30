@@ -1,41 +1,192 @@
 ---
-description: "Guidelines for creating, organizing, and maintaining Cursor rules for consistent AI agent behavior"
-globs: [".cursor/rules/**/*.mdc"]
+description: Essential for creating, organizing, and maintaining Cursor rules effectively. Use when working with .mdc files, experiencing rule issues, or need guidance on rule types and metadata configurations.
+globs:
 alwaysApply: false
 ---
-- Each rule file should have a clear, descriptive filename using snake_case (e.g., `elixir_code_generation.mdc`).
-- All rule files must include metadata header with exactly 3 fields: description, globs, and alwaysApply.
-- When working with Cursor rule metadata (frontmatter), use terminal commands to view or edit since file reading tools cannot see the metadata. For content-only changes, regular file editing is fine.
-- Descriptions should be specific and indicate when the rule applies (technology, context, conditions).
-- Use bullet points for concise, actionable guidelines rather than long paragraphs.
-- Group related rules into separate files rather than creating monolithic rule files.
-- Make rules generic and reusable across different projects when possible.
-- For project-specific rules, use conditional language (e.g., "only for projects with internationalization").
+# Cursor Rules: Complete Guide and Troubleshooting
 
-## Rule Types and Context Management
-- Use `alwaysApply: true` sparingly - only for core development practices that should always be present.
-- Use `alwaysApply: false` with specific globs for auto-attached rules that apply to certain file types.
-- Use `alwaysApply: false` with empty globs (`globs:`) for agent-requested rules where AI decides relevance.
-- Avoid context overload by limiting the number of `alwaysApply: true` rules.
-- Prefer agent-requested rules for context-specific guidance (planning, i18n, testing, project structure).
+## 🔍 Critical Understanding for AI Agents
 
-## Glob Pattern Guidelines
-- Use proper YAML array format for globs: `["pattern1", "pattern2"]`.
-- For agent-requested rules, use `globs:` (no whitespace, no array) to let AI decide when to include.
-- Avoid overly restrictive globs that miss relevant contexts (e.g., i18n involves more than just .po files).
-- Target specific file types only when the rule truly applies to those files exclusively.
+When working with .mdc files, AI agents must understand:
+
+- **Never trust frontmatter visibility**: Cursor's file reading tools often hide or misrepresent frontmatter content, even with editor association fix
+- **Always verify metadata with terminal commands**: Use `head -5 filename.mdc` to see actual frontmatter
+- **Content editing works normally**: You can edit the markdown content using standard edit tools
+- **Metadata editing may work with fix**: After applying editor association fix, frontmatter editing through normal tools should work
+- **But verification still requires terminal**: File reading APIs may still hide frontmatter from AI agents
+- **Ignore missing frontmatter in file views**: If you don't see frontmatter when reading a file, assume it's a display bug
+
+**Key principle**: Trust terminal commands for metadata verification, but try normal editing for both content and metadata after applying the editor association fix.
+
+## ⚠️ Terminal Line Wrapping Deception
+
+**CRITICAL**: Even terminal commands can visually deceive AI agents due to line wrapping:
+
+- **Long descriptions appear multi-line**: When using `head -5`, a single long description line may visually wrap across multiple terminal lines
+- **This is NOT a file structure issue**: The file actually contains the description on a single line (line 2 of frontmatter)
+- **Visual wrapping ≠ actual line breaks**: What looks like line breaks in terminal output are just display wrapping
+- **Logic check**: If `head -5` shows 5 lines, there ARE only 5 lines - visual wrapping doesn't add lines
+- **Don't "fix" correct frontmatter**: If frontmatter follows the pattern `---`, `description: [text]`, `globs:`, `alwaysApply: false`, `---` it's correct even if description appears wrapped
+
+**Verification technique**: Use `sed -n '1,5p' filename.mdc | cat -n` to see actual line numbers and confirm structure.
+
+**Remember**: Your eyes can trick you, but line counts don't lie.
+
+## Rule Types and Behavior
+
+Cursor rules go through **two distinct stages**:
+
+### Stage 1: Context Injection
+Rules are added to the AI's context based on frontmatter configuration:
+
+### Stage 2: Activation  
+The AI decides whether to actually use injected rules based on relevance to the current query.
+
+## The Four Rule Types
+
+### 1. Always Rules
+```mdc
+---
+description: 
+globs: 
+alwaysApply: true
+---
+```
+- **Behavior**: Always injected into every chat and command+k
+- **Use case**: Universal coding standards, critical practices
+- **Warning**: Use sparingly to avoid context overload
+
+### 2. Auto-Attach Rules  
+```mdc
+---
+description: 
+globs: lib/**/*.ex, test/**/*.exs
+alwaysApply: false
+---
+```
+- **Behavior**: Injected when user attaches/mentions files matching glob patterns
+- **Use case**: Technology-specific rules (Elixir, Phoenix LiveView, etc.)
+- **Important**: Only triggered when files are explicitly attached to chat, not just opened
+
+### 3. Agent Requested Rules
+```mdc
+---
+description: Clear description of when this rule should apply
+globs: 
+alwaysApply: false
+---
+```
+- **Behavior**: AI decides whether to fetch and use based on description
+- **Use case**: Workflow guidance, context-dependent practices
+- **Key**: Description must clearly indicate trigger conditions
+
+### 4. Manual Rules
+```mdc
+---
+description: 
+globs: 
+alwaysApply: false
+---
+```
+- **Behavior**: Only used when explicitly referenced with @ or markdown links
+- **Use case**: Specialized procedures, emergency workflows
+
+## Critical Technical Details
+
+### Frontmatter Format
+- **NOT YAML**: Don't quote values or use YAML syntax
+- **Three required fields**: All rules must have `description:`, `globs:`, and `alwaysApply:` (even if empty)
+- **No field combinations**: Avoid mixing `description` with `globs` - causes confusion
+
+### Context vs Activation
+The AI receives this instruction about rules:
+> "Use them if they seem useful to the user's most recent query, but do not use them if they seem unrelated."
+
+This means:
+- Rules in context are **suggestions**, not commands
+- AI can ignore rules even if they're injected
+- Rule content and relevance matter more than frontmatter after injection
+
+### File-Type Limitations
+- **Agent rules cannot be limited by file type** - there's no supported syntax to make description-based rules only apply to specific file extensions
+- Use separate Auto-Attach rules if you need file-type specificity
 
 ## Best Practices
-- Keep rules focused on a single domain or technology (e.g., separate Elixir and JavaScript rules).
-- Update rule descriptions when adding new guidelines to maintain accuracy.
-- Test rule effectiveness by checking if context feels appropriate for different file types.
 
-## Reading and Updating Rules
-- Use `head -5 filename.mdc` or `cat filename.mdc` to view rule metadata via terminal.
-- File reading tools cannot see the YAML frontmatter metadata - they only show content after the `---` markers.
-- When bulk-updating metadata, use `sed` commands for consistency across multiple files.
-- Use `grep -n "field:" *.mdc` to quickly check specific metadata fields across all rules.
-- After metadata changes, verify with terminal commands before assuming changes took effect.
-- The Cursor Settings UI is the most reliable way to create new rules to avoid formatting issues.
-- If rule changes don't persist, close Cursor completely, choose "Override" on unsaved changes prompt, then reopen.
-- Use `for file in *.mdc; do echo "=== $file ==="; head -5 "$file"; done` to review all rule metadata at once.
+### Writing Effective Rules
+- **Keep rules focused**: One concept per file
+- **Use clear descriptions**: For Agent Requested rules, be specific about trigger conditions
+- **Start descriptions with action words**: "USE WHEN creating tests", "APPLY FOR Elixir files"
+- **Avoid redundancy**: Don't duplicate information across multiple rules
+- **Test rule effectiveness**: Monitor when rules get applied vs ignored
+
+### Rule Organization
+- **Descriptive filenames**: Use `snake_case` (e.g., `elixir_coding_standards.mdc`)
+- **Separate by domain**: Create different files for different technologies/workflows
+- **Version control**: Commit `.cursor/rules/` to share with team
+- **Regular cleanup**: Remove obsolete rules that AI consistently ignores
+
+### Working with Rules Safely
+
+#### For AI Agents: Content vs Metadata
+- **Content editing**: Use normal edit tools - they work fine for markdown content
+- **Metadata verification**: Always use terminal commands - file reading tools hide frontmatter
+- **When in doubt about frontmatter**: Run `head -5 filename.mdc` to see the truth
+- **Don't trust missing frontmatter**: If you don't see frontmatter in file views, it's likely a display bug
+
+#### Terminal Commands (Required for Metadata)
+```bash
+# View rule content
+cat .cursor/rules/rule_name.mdc
+
+# View just metadata (CRITICAL for verification)
+head -5 .cursor/rules/rule_name.mdc
+
+# Check all rule metadata
+for file in .cursor/rules/*.mdc; do echo "=== $file ==="; head -5 "$file"; done
+```
+
+#### Safe Metadata Editing with sed
+```bash
+# Change description (line 2)
+sed -i '2s/.*/description: New description text/' rule.mdc
+
+# Empty description  
+sed -i '2s/.*/description:/' rule.mdc
+
+# Change globs (line 3)
+sed -i '3s/.*/globs: lib\/**\/*.ex, test\/**\/*.exs/' rule.mdc
+
+# Always verify changes
+head -5 rule.mdc
+```
+
+### Troubleshooting Common Issues
+
+#### Rules Not Applying
+1. **Check frontmatter syntax**: Ensure proper format without quotes
+2. **Verify rule type**: Match metadata to intended behavior  
+3. **Test description clarity**: For Agent rules, make trigger conditions obvious
+4. **Start new chat**: Rules are loaded at chat initialization
+5. **Check context overload**: Too many rules can cause AI to ignore some
+
+#### Editing Problems
+1. **Use editor association fix**: Disable custom .mdc editor
+2. **Verify file contents via terminal**: Files may appear empty but contain content
+3. **Avoid auto-save issues**: Set auto-save to `onFocusChange` or `off` for .mdc files
+
+#### Agent Not Following Rules
+1. **Check rule relevance**: AI ignores rules it deems unrelated
+2. **Simplify rule content**: Focus on actionable, specific guidance
+3. **Reduce rule count**: Fewer, higher-quality rules work better
+4. **Test with different models**: Some models handle rules better than others
+
+## Rule Evolution Strategy
+
+- **Start minimal**: Begin with few, essential rules
+- **Iterate based on usage**: Add rules when you notice inconsistent AI behavior
+- **Monitor effectiveness**: Remove rules that AI consistently ignores
+- **Adapt to model changes**: Rule effectiveness varies with different AI models
+- **Document successful patterns**: Note which rule styles work best for your workflow
+
+Remember: The rule system is constantly evolving. What works today may need adjustment tomorrow as Cursor and AI models change.

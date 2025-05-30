@@ -1,6 +1,6 @@
 ---
 description: "GitHub workflow and CI/CD pipeline configuration and usage"
-globs: .github/github_workflows.ex,.github/workflows/*.yml
+globs:
 alwaysApply: false
 ---
 - Update workflows exclusively by editing `.github/github_workflows.ex` file.

@@ -1,6 +1,6 @@
 ---
 description: "Phoenix framework specific guidelines for generators, contexts, LiveView, PubSub, database management, and testing patterns"
-globs: ["lib/**/*.{ex,exs}", "**/*_web/**/*.{ex,exs}"]
+globs:
 alwaysApply: false
 ---
 - When creating new resources (schemas, contexts, LiveViews) use Phoenix generators (`mix phx.gen.*`; e.g. `mix phx.gen.context`).

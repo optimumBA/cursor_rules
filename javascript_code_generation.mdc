@@ -1,6 +1,6 @@
 ---
 description: "JavaScript and frontend development standards for Phoenix LiveView hooks, formatting, and asset management"
-globs: ["assets/**/*.js", "assets/**/*.ts"]
+globs:
 alwaysApply: false
 ---
 - When creating javascript hooks for Phoenix LiveView, you do not need to create an index.js file to import the hook. Simply, update the app.js, import the hook like `import FlatpickrCalendar from './hooks/flatpickr_calendar' at the top and update the `Hooks` variable (e.g. `const Hooks = { FlatpickrCalendar }`).
