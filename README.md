@@ -7,7 +7,8 @@ Cursor rules suitable for development using Elixir and Phoenix.
 **Before using these rules**, you must fix a critical bug in Cursor's .mdc file handling:
 
 Cursor's custom .mdc editor is severely buggy and causes multiple issues:
-- **Cursor jumps to description field during editing** 
+
+- **Cursor jumps to description field during editing**
 - **Auto-save disrupts workflow and causes focus issues**
 - **Agent thinks it's editing files but changes don't persist to filesystem**
 - **Files may appear empty when they contain content**
@@ -23,8 +24,9 @@ Add this to your Cursor settings to disable the custom .mdc editor:
 ```
 
 **How to apply**:
+
 1. Open Cursor Settings (Cmd/Ctrl + ,)
-2. Search for "editorAssociations" 
+2. Search for "editorAssociations"
 3. Add the mapping above
 4. Restart Cursor if needed
 
