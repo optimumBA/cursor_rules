@@ -1,0 +1,68 @@
+---
+description: Advanced Cursor rules organization and effectiveness tips - use when optimizing rule performance
+globs:
+alwaysApply: false
+---
+# Cursor Rules: Best Practices and Organization
+
+## Rule Evolution Strategy
+
+- **Start minimal**: Begin with few, essential rules
+- **Iterate based on usage**: Add rules when you notice inconsistent AI behavior
+- **Monitor effectiveness**: Remove rules that AI consistently ignores
+- **Adapt to model changes**: Rule effectiveness varies with different AI models
+
+## Advanced Organization Patterns
+
+### Rule Naming Conventions
+- Use descriptive, searchable names: `elixir_testing_patterns.mdc`
+- Group by technology: `phoenix_liveview.mdc`, `javascript_hooks.mdc`
+- Separate by workflow: `deployment_checklist.mdc`, `code_review_standards.mdc`
+- Version specialized rules: `api_v2_standards.mdc`
+
+### Rule Hierarchy Strategy
+- **Foundation rules**: Core standards that apply broadly (Always rules)
+- **Technology rules**: Language/framework specific (Auto-Attach rules)
+- **Workflow rules**: Process and procedure guidance (Agent rules)
+- **Emergency rules**: Troubleshooting and fixes (Manual rules)
+
+### Content Optimization
+- **Lead with action verbs**: "Use", "Apply", "Check", "Avoid"
+- **Prioritize common scenarios**: Put frequent use cases first
+- **Use consistent formatting**: Standardize bullet points, code blocks, headings
+- **Include negative examples**: Show what NOT to do
+- **Add context clues**: Help AI understand when rule applies
+
+## Effectiveness Measurement
+
+### Tracking Rule Usage
+- Note which rules appear in AI responses
+- Monitor consistency of rule application
+- Track when rules are ignored vs applied
+
+### Performance Indicators
+- **High effectiveness**: Rule consistently applied when relevant
+- **Medium effectiveness**: Rule applied sometimes, may need refinement
+- **Low effectiveness**: Rule rarely applied, consider removal or rewrite
+- **Negative effectiveness**: Rule causes confusion or wrong behavior
+
+### Optimization Techniques
+- **A/B test descriptions**: Try different trigger phrases
+- **Simplify complex rules**: Break into smaller, focused components
+- **Update based on AI feedback**: Refine when AI misinterprets
+- **Remove redundancy**: Eliminate overlapping or conflicting rules
+
+## Advanced Techniques
+
+### Dynamic Rule Content
+- Use conditional language: "If using Phoenix 1.7+, then..."
+- Include version-specific guidance
+- Reference external documentation when appropriate
+- Provide fallback approaches for edge cases
+
+### Rule Composition
+- Create modular rules that reference each other
+- Use consistent terminology across related rules
+- Build rule hierarchies for complex workflows
+- Maintain clear separation of concerns
+

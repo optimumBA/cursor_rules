@@ -1,0 +1,72 @@
+---
+description: Cursor rules frontmatter editing and terminal verification - use when experiencing metadata visibility issues
+globs:
+alwaysApply: false
+---
+# Cursor Rules: Metadata and Terminal Verification
+
+## 🔍 Critical Understanding for AI Agents
+
+When working with .mdc files, AI agents must understand:
+
+- **Never trust frontmatter visibility**: Cursor's file reading tools often hide or misrepresent frontmatter content, even with editor association fix
+- **Always verify metadata with terminal commands**: Use `head -5 filename.mdc` to see actual frontmatter
+- **Content editing works normally**: You can edit the markdown content using standard edit tools
+- **Metadata editing may work with fix**: After applying editor association fix, frontmatter editing through normal tools should work
+- **But verification still requires terminal**: File reading APIs may still hide frontmatter from AI agents
+- **Ignore missing frontmatter in file views**: If you don't see frontmatter when reading a file, assume it's a display bug
+
+**Key principle**: Trust terminal commands for metadata verification, but try normal editing for both content and metadata after applying the editor association fix.
+
+## ⚠️ Terminal Line Wrapping Deception
+
+**CRITICAL**: Even terminal commands can visually deceive AI agents due to line wrapping:
+
+- **Long descriptions appear multi-line**: When using `head -5`, a single long description line may visually wrap across multiple terminal lines
+- **This is NOT a file structure issue**: The file actually contains the description on a single line (line 2 of frontmatter)
+- **Visual wrapping ≠ actual line breaks**: What looks like line breaks in terminal output are just display wrapping
+- **Logic check**: If `head -5` shows 5 lines, there ARE only 5 lines - visual wrapping doesn't add lines
+- **Don't "fix" correct frontmatter**: If frontmatter follows the pattern `---`, `description: [text]`, `globs:`, `alwaysApply: false`, `---` it's correct even if description appears wrapped
+
+**Verification technique**: Use `sed -n '1,5p' filename.mdc | cat -n` to see actual line numbers and confirm structure.
+
+**Important**: Visual wrapping in terminal output doesn't indicate actual line breaks - line counts are accurate.
+
+## Working with Rules Safely
+
+### For AI Agents: Content vs Metadata
+- **Content editing**: Use normal edit tools - they work fine for markdown content
+- **Metadata verification**: Always use terminal commands - file reading tools hide frontmatter
+- **When in doubt about frontmatter**: Run `head -5 filename.mdc` to see the truth
+- **Don't trust missing frontmatter**: If you don't see frontmatter in file views, it's likely a display bug
+
+### Terminal Commands (Required for Metadata)
+```bash
+# View rule content
+cat .cursor/rules/rule_name.mdc
+
+# View just metadata (CRITICAL for verification)
+head -5 .cursor/rules/rule_name.mdc
+
+# Check all rule metadata
+for file in .cursor/rules/*.mdc; do echo "=== $file ==="; head -5 "$file"; done
+```
+
+### Safe Metadata Editing with sed
+```bash
+# Change description (line 2)
+sed -i '2s/.*/description: New description text/' rule.mdc
+
+# Empty description  
+sed -i '2s/.*/description:/' rule.mdc
+
+# Change globs (line 3)
+sed -i '3s/.*/globs: lib\/**\/*.ex, test\/**\/*.exs/' rule.mdc
+
+# Always verify changes
+head -5 rule.mdc
+```
+
+### File-Type Limitations
+- **Agent rules cannot be limited by file type** - there's no supported syntax to make description-based rules only apply to specific file extensions
+- Use separate Auto-Attach rules if you need file-type specificity

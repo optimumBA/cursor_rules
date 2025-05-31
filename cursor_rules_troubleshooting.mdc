@@ -1,0 +1,52 @@
+---
+description: Troubleshooting common Cursor rules issues - use when rules aren't applying, editing problems occur, or AI isn't following rules
+globs:
+alwaysApply: false
+---
+# Cursor Rules: Troubleshooting Guide
+
+## Rules Not Applying
+
+1. **Check frontmatter syntax**: Ensure proper format without quotes
+2. **Verify rule type**: Match metadata to intended behavior  
+3. **Test description clarity**: For Agent rules, make trigger conditions obvious
+4. **Start new chat**: Rules are loaded at chat initialization
+5. **Check context overload**: Too many rules can cause AI to ignore some
+6. **Rule length check**: Rules over 1,000 words may be ignored due to context overflow
+
+## Editing Problems
+
+1. **Use editor association fix**: Disable custom .mdc editor
+2. **Verify file contents via terminal**: Files may appear empty but contain content
+3. **Avoid auto-save issues**: Set auto-save to `onFocusChange` or `off` for .mdc files
+4. **Check frontmatter visibility**: Use terminal commands to verify metadata (see `cursor_rules_metadata.mdc`)
+
+## Agent Not Following Rules
+
+1. **Check rule relevance**: AI ignores rules it deems unrelated
+2. **Simplify rule content**: Focus on actionable, specific guidance
+3. **Reduce rule count**: Fewer, higher-quality rules work better
+4. **Test with different models**: Some models handle rules better than others
+5. **Split large rules**: Break complex rules into focused components
+6. **Improve descriptions**: Make trigger conditions more explicit for Agent rules
+
+## Context Overload Symptoms
+
+- Rules that previously worked stop being applied
+- AI mentions not having access to certain information
+- Inconsistent rule application across similar scenarios
+- New rules not being recognized
+
+**Solutions:**
+- Audit rule lengths and split rules over 1,000 words
+- Remove redundant or obsolete rules
+- Consolidate similar rules where appropriate
+- Use more specific descriptions to improve relevance matching
+
+## Rule Effectiveness Testing
+
+1. **Monitor application**: Note when rules are used vs ignored
+2. **Test in new chats**: Rules are loaded fresh in each session
+3. **Check with explicit mentions**: Reference rules with @ to test manual activation
+4. **Verify with different queries**: Test rule activation across various scenarios
+5. **Review rule descriptions**: Ensure they clearly indicate when to apply
