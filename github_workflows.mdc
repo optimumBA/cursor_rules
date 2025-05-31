@@ -1,5 +1,5 @@
 ---
-description: "GitHub workflow and CI/CD pipeline configuration and usage"
+description: GitHub workflow and CI/CD pipeline configuration and usage
 globs:
 alwaysApply: false
 ---

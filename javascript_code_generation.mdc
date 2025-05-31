@@ -1,5 +1,5 @@
 ---
-description: "JavaScript and frontend development standards for Phoenix LiveView hooks, formatting, and asset management"
+description: JavaScript and frontend development standards for Phoenix LiveView hooks, formatting, and asset management
 globs:
 alwaysApply: false
 ---

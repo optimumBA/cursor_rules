@@ -1,5 +1,5 @@
 ---
-description: "End-to-end testing using Wallaby and ChromeDriver"
+description: End-to-end testing using Wallaby and ChromeDriver
 globs:
 alwaysApply: false
 ---

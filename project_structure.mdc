@@ -1,5 +1,5 @@
 ---
-description: "Standard Phoenix project structure and file organization conventions"
+description: Standard Phoenix project structure and file organization conventions
 globs:
 alwaysApply: false
 ---

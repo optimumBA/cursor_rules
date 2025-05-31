@@ -1,5 +1,5 @@
 ---
-description: "Package management guidelines for JavaScript dependencies in Phoenix projects"
+description: Package management guidelines for JavaScript dependencies in Phoenix projects
 globs:
 alwaysApply: false
 ---

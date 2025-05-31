@@ -1,5 +1,5 @@
 ---
-description: "Translation workflow for Elixir/Phoenix gettext - finding and filling missing translations (only for projects with internationalization)"
+description: Translation workflow for Elixir/Phoenix gettext - finding and filling missing translations (only for projects with internationalization)
 globs:
 alwaysApply: false
 ---

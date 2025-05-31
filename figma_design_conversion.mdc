@@ -1,5 +1,5 @@
 ---
-description: "Figma design to Phoenix LiveView conversion using MCP integration, design tokens, and component development patterns"
+description: Figma design to Phoenix LiveView conversion using MCP integration, design tokens, and component development patterns
 globs:
 alwaysApply: false
 ---
