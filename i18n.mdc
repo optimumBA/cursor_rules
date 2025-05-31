@@ -22,3 +22,5 @@ alwaysApply: false
 - Translation domains are determined by the .po files present in the project (e.g., jobs.po, general.po, companies.po).
 - Maintain consistency in terminology across all domains within the same language.
 - Use appropriate formality levels and typography rules for each target language.
+- Fuzzy translations (marked with `#, fuzzy`) are uncertain and need review - always verify and remove the fuzzy flag when corrected.
+- Search for fuzzy translations with: `grep -r "fuzzy" priv/gettext/*/LC_MESSAGES/*.po`.
