@@ -17,3 +17,4 @@ alwaysApply: false
 - Fix formatting issues by running `mix format`.
 - Fields inside schemas need to be ordered alphabetically.
 - Use only proper Elixir: don't call functions that don't exist that might be available in other languages.
+- Sort keys in a map alphabetically.

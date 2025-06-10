@@ -13,3 +13,4 @@ alwaysApply: false
 - Components and live components are tested through the parent LiveViews, not in isolation.
 - Event names should be snake cased.
 - After each code change, the LiveView page reloads automatically, letting you inspect runtime logs and catch errors.
+- Sort component attributes alphabetically.
