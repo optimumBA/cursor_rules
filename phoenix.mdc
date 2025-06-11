@@ -3,14 +3,35 @@ description: Use when working with Phoenix framework, LiveView, contexts, schema
 globs:
 alwaysApply: false
 ---
+# Phoenix Framework Development Guide
+
+## Generators and Resources
 - When creating new resources (schemas, contexts, LiveViews) use Phoenix generators (`mix phx.gen.*`; e.g. `mix phx.gen.context`).
 - To see all available generators, run `mix help`.
 - To see all available generator options, run `mix help phx.gen.*` (e.g. `mix help phx.gen.context`).
+
+## Code Organization
 - When referring to schemas from other contexts, alias the context (e.g. `alias MyApp.Accounts`) and prefix the schema name with context (e.g. `Accounts.User`).
+- Sort component attributes alphabetically.
+
+## PubSub and Real-time Features
 - When working with PubSub, we can use `Endpoint.broadcast/3` and `Endpoint.subscribe/2`.
+
+## Database and Testing
 - Run `MIX_ENV=test mix ecto.drop` when trying to reset the test database.
 - There is no need to run `mix ecto.create` and `mix ecto.migrate` for test database because `mix test` does it automatically.
 - Components and live components are tested through the parent LiveViews, not in isolation.
+
+## LiveView Development
 - Event names should be snake cased.
 - After each code change, the LiveView page reloads automatically, letting you inspect runtime logs and catch errors.
 - Sort component attributes alphabetically.
+
+## Server
+- Assume the server is running.
+- Don't assume the port is 4000. Get the correct port from Endpoint configuration.
+
+## Configuration
+- Use Tidewave MCP tools to get access the runtime configuration as it's different from what's in dev.exs.
+- Use `Application.get_env(:app_name, Module)` to access runtime configuration.
+- To inspect current configuration: `Application.get_all_env(:app_name)`.
