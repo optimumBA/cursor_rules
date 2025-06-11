@@ -1,5 +1,5 @@
 ---
-description: Core Cursor rules guidelines and rule length limits - use when working with .mdc files or experiencing rule issues
+description: Use when editing cursor rules, working with .mdc files, fixing rule issues, updating rule metadata, or troubleshooting rule activation problems
 globs:
 alwaysApply: false
 ---

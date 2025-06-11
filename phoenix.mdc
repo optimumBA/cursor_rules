@@ -1,5 +1,5 @@
 ---
-description: Phoenix framework specific guidelines for generators, contexts, LiveView, PubSub, database management, and testing patterns
+description: Use when working with Phoenix framework, LiveView, contexts, schemas, generators, PubSub, or database operations
 globs:
 alwaysApply: false
 ---

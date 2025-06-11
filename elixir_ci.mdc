@@ -1,5 +1,5 @@
 ---
-description: Continuous integration workflow for Elixir projects - running tests, formatting, coverage analysis, and quality checks
+description: Use when running tests, fixing CI failures, checking code coverage, formatting issues, or database test problems in Elixir projects
 globs:
 alwaysApply: false
 ---
