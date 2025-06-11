@@ -48,7 +48,7 @@ They can live side-by-side with your existing rules.
 To update the Cursor rules to the latest version:
 
 ```bash
-git submodule foreach git checkout main && git pull
+git submodule foreach "git checkout main && git pull"
 ```
 
 This ensures you get the latest improvements and bug fixes to the rules.
