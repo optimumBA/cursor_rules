@@ -9,7 +9,7 @@ alwaysApply: false
 - Run `mix coveralls` and `mix coveralls.detail` to find out which code needs to be covered with tests.
 - While fixing tests, you can use mix test --failed to run only previously failed tests.
 - Never cheat by hardcoding values that are fit only for our tests to pass.
-- To check code coverage run `mix coveralls.json` and then read file `cover/excoveralls.json`.
+- To check code coverage run `mix coveralls.details` (e.g. `mix coveralls.detail test/my_app/processor_test.exs --filter processor`)
 - Running `mix help <command>` can give you info on available options.
 - If tests fail due to database schema inconsistencies, missing columns, or seed data interference, reset the test database with `MIX_ENV=test mix ecto.drop`.
 - `mix test` will automatically recreate and migrate the database after dropping it.
