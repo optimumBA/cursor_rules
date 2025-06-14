@@ -11,3 +11,5 @@ alwaysApply: false
 - Avoid duplicating code. Refactor shared logic into reusable functions to reduce redundancy.
 - Don't add checks for conditions that will never happen.
 - Use `Ecto.Enum` type for fields with dropdowns in forms.
+- Avoid adding redundant code.
+- Don't keep obsolete code to "maintain backwards compatibility".
