@@ -30,6 +30,8 @@ alwaysApply: false
 ## Server
 - Assume the server is running.
 - Don't assume the port is 4000. Get the correct port from Endpoint configuration.
+- Don't restart the server - it support hot reloading.
+- Only after updating config files, adding/updating Oban workers, or any GenServer/Supervisor, you need to restart the server.
 
 ## Configuration
 - Use Tidewave MCP tools to get access the runtime configuration as it's different from what's in dev.exs.
